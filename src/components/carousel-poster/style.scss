@@ -1,0 +1,33 @@
+.carousel {
+  border: 2px solid blue;
+  white-space: nowrap;
+ 
+  -webkit-scrollbar: disabled;
+  overflow-x: scroll;
+
+
+  .carouselItem {
+    display: inline-block;
+    height: 300px;
+    width: 200px;
+    object-fit: contain;
+    margin: 10px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+
+    .posterBlock {
+      img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        height: 100%;
+        white-space: nowrap;
+        
+      }
+    }
+  }
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}

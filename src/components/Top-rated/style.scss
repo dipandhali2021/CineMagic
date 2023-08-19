@@ -1,0 +1,24 @@
+.top-rated-bar {
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .name-bar {
+    display: flex;
+    
+    align-items: center;
+    gap: 10px;
+
+    img {
+      height: 30px;
+      width: 30px;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  .see-all {
+    display: flex;
+    align-items: center;
+  }
+}

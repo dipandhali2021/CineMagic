@@ -1,0 +1,28 @@
+.names-container {
+    text-align: center;
+    
+  }
+  
+  .names-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+    margin-top: 10px;
+  }
+  
+  .name-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+
+    .plus-icon{
+        display: flex;
+        align-items: center;
+    }
+  }
+  

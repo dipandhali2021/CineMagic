@@ -1,0 +1,38 @@
+.cast-container{
+margin-top: 50px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+h1{
+    z-index: 13;
+}
+
+    .cast-flex{
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        padding: 0 40px;
+
+
+        &::-webkit-scrollbar {
+            
+            height: 10px;
+            border: none;
+            
+           
+          }
+        &::-webkit-scrollbar-track {
+            background: #24cc83; 
+            border-radius: 10px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: #611e1e; 
+            -webkit-width:5px;
+            border-radius: 10px;
+            
+          }
+
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+    }
+}}

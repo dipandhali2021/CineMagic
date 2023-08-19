@@ -1,0 +1,125 @@
+.main-details-container{
+    width: 100%;
+    height: 600px;
+    background-color: rgba(24, 24, 27, 0.288);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    z-index: -10;
+    .backdrop-img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.7;
+        overflow: hidden;
+        
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                
+            }
+    }
+
+    .opacity-layer {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0) 0%,
+            #ffffff 79.17%
+        );
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+  
+        .poster-block{
+            position: relative;
+            height: 400px;
+            margin-top: 400px;
+            display: flex;
+            gap: 20px;
+
+            
+            
+            
+            .poster{
+                width: 300px;
+                height: 400px;
+                
+                img{
+                    width: 100%;
+                height: 100%; 
+                }
+            }
+
+            .poster-details{
+                width: 800px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .movie-name{
+                    font-size: 50px;
+                    font-weight: bold;
+
+                }
+
+                .flex-box-poster{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    .genres{
+                        .genres-container{
+                           
+                            .names-flex{
+                                display: flex;
+                                gap: 10px;
+                            }
+                        }
+                    }
+                }
+
+                .rating{
+                    width: 60px;
+                    height: 60px;
+                    .circleRating {
+                        background-color: var(--black);
+                        border-radius: 50%;
+                        padding: 2px;
+                        .CircularProgressbar-text {
+                            font-size: 34px;
+                            font-weight: 700;
+                            fill: var(--black);
+                        }
+                        .CircularProgressbar-trail {
+                            stroke: transparent;
+                        }
+                    }
+                }
+                .watch-now {
+                    display: flex;
+                    gap: 20px;
+                    .watch-button {
+                      border: none;
+                      border-radius: 20px;
+                      padding: 10px;
+                      background-color: rgba(255, 0, 0, 0.37);
+                      color: white;
+                      font-weight: bold;
+                      cursor: pointer;
+                    }
+                    
+                  }
+            }
+            
+    
+        }
+        
+    }
+    
