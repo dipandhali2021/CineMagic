@@ -7,41 +7,77 @@ import {
   AiOutlinePlusSquare,
   AiFillCaretDown,
 } from "react-icons/ai";
-import DialogBox from "../DialogBox/DialogBox"
+
+import SignIn from "../SignIn/SignIn";
+import Login from '../Login/Login'
 import { HiOutlineSignal } from "react-icons/hi2";
 import { BiLogOut, BiCategory } from "react-icons/bi";
-import { CiStreamOn } from "react-icons/ci";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { MdNotificationsNone } from "react-icons/md";
-import { Library, Streaming, menu, miscellaneous } from "./NavbarData";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Backdrop, Badge, Box, Button, CircularProgress } from "@mui/material";
-
-import "./style.scss";
-import { Link } from "react-router-dom";
+import Lottie from "lottie-react";
+import Profile from "../../assets/images/system-outline-8-account.json";
+import Bell from "../../assets/images/system-solid-46-notification-bell.json";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Recent from "../Navbar/Recent-downloads/Recent";
 import { useMenuOpen } from "../../customHook/useMenuOpen.js";
-import { Avatar, Divider, Drawer, IconButton, Tooltip } from "@mui/material";
-
-import Genres from "../Navbar/Genres/Genres";
-import Bookmarked from "../Navbar/Bookmarked/Bookmarked";
-
+import CloseIcon from "@mui/icons-material/Close";
+import {
+  Dialog,
+  DialogActions,
+  Drawer,
+  IconButton,
+  Tooltip,
+} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Backdrop, Badge, Box, Button, CircularProgress } from "@mui/material";
+import { blue, red } from "@mui/material/colors";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { blue, red } from "@mui/material/colors";
+import PageNot from "../../assets/images/404/animation_llp1qyau.json";
+import Genres from "../Navbar/Genres/Genres";
+import Bookmarked from "../Navbar/Bookmarked/Bookmarked";
+import { Library, Streaming, menu, miscellaneous } from "./NavbarData";
 
-const Navbar = () => {
+import "./style.scss";
+import ColorTabs from "./Tabs/Tabs";
+import useFetching from "../../hooks/useFetching";
+import { getAuth, signOut } from "firebase/auth";
+import Footer from "../Footer/Footer";
+
+
+const Navbar = (data) => {
+  
   const [isOpen, , setIsOpen, toggle] = useMenuOpen();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openbackdrop, setOpenbackdrop] = useState(false);
+  const [openbackdrop2, setOpenbackdrop2] = useState(false);
+  const [openbackdrop3, setOpenbackdrop3] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  // const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const open = Boolean(anchorEl);
+  const { mediaType, page } = useParams();
+  const navigate = useNavigate();
+  // const { data } = useFetching("/movie/new/1", {}); // Pass the URL and params as needed
+
+  // console.log(data);
 
   const handleOpenBackdrop = () => {
     setOpenbackdrop(true);
   };
   const handleCloseBackdrop = () => {
-    setOpenbackdrop(false);
+    setOpenbackdrop(!openbackdrop);
+  };
+  const handleOpenBackdrop2 = () => {
+    setOpenbackdrop2(true);
+  };
+  const handleCloseBackdrop2 = () => {
+    setOpenbackdrop2(!openbackdrop2);
+  };
+  const handleOpenBackdrop3 = () => {
+    setOpenbackdrop3(true);
+  };
+  const handleCloseBackdrop3 = () => {
+    setOpenbackdrop3(!openbackdrop3);
   };
 
   const handleClick = (event) => {
@@ -50,6 +86,18 @@ const Navbar = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+    
+  };
+  const handleCloseout = () => {
+    setAnchorEl(null);
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        navigate('/home/tv')
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
 
   const theme = createTheme({
@@ -60,6 +108,14 @@ const Navbar = () => {
       secondary: blue,
     },
   });
+  // if ((data?.data?.name)=== ''){
+  //   setIsButtonDisabled(true)
+  // }else{
+  //   setIsButtonDisabled(false)
+  // }
+const isButtonDisabled= data?.data?.name === '';
+console.log(data?.data?.name)
+console.log(isButtonDisabled)
 
   return (
     <>
@@ -69,66 +125,98 @@ const Navbar = () => {
             <CgMenuBoxed
               className={isOpen ? "hidden menu-bar" : "menu-icon  "}
               onClick={toggle}
+              style={{ color: "white" }}
             />
           </button>
         </Tooltip>
 
         <div
           className="genres-box"
-          style={{ marginLeft: isOpen ? "300px" : "50px" }}
+          style={{
+            marginLeft: isOpen ? "300px" : "50px",
+            transition: "all 0.4s",
+          }}
         >
-          <ul className="genres">
-            <li className="genre1">Movies</li>
-            <li className="genre2">Series</li>
-            <li className="genre3">TV Shows</li>
-          </ul>
+          <ColorTabs />
         </div>
         <div
           className="right-icons-box"
-          style={{ marginRight: isDrawerOpen ? "350px" : "0px" }}
+          style={{
+            marginRight: isDrawerOpen ? "350px" : "0px",
+            transition: "all 0.5s",
+          }}
         >
           <ThemeProvider theme={theme}>
             <Tooltip title="live">
               <button className="right-div-props">
-                <HiOutlineSignal className="menu-icon right-icons" />
+                <HiOutlineSignal
+                  style={{ color: "white" }}
+                  className="menu-icon right-icons"
+                />
               </button>
             </Tooltip>
             <Tooltip title="notifications">
               <button onClick={handleOpenBackdrop} className="right-div-props">
-            <Badge color="secondary" overlap="circular" badgeContent=" 1" variant="dot">
-                <MdNotificationsNone className="menu-icon right-icons " />
-              </Badge>
-              </button>
-
-              <Backdrop
-                sx={{
-                  color: "#fff",
-                  zIndex: 11,
-                }}
-                open={openbackdrop}
-                onClick={handleCloseBackdrop}
-              >
-                <Box
+                <Badge
                   sx={{
-                    width: 300,
-                    height: 300,
-                    backgroundColor: "primary.dark",
-                    "&:hover": {
-                      backgroundColor: "primary.main",
-                      opacity: [0.9, 0.8, 0.7],
+                    "& .MuiBadge-badge": {
+                      backgroundColor: "red",
                     },
                   }}
-                />
-              </Backdrop>
+                  overlap="circular"
+                  badgeContent=" 1"
+                  variant="dot"
+                >
+                  <Lottie
+                    animationData={Bell}
+                    loop={false}
+                    style={{ width: 40 }}
+                    className="Bell"
+                    autoPlay={false}
+                  />
+                </Badge>
+              </button>
+
+              <Dialog
+                maxWidth={"lg"}
+                PaperProps={{
+                  sx: {
+                    width: "1200px",
+                    height: "750px",
+                  },
+                }}
+                open={openbackdrop}
+                onClose={handleCloseBackdrop}
+              >
+                <div className="latest-movies"></div>
+                <div className="latest-shows"></div>
+                <DialogActions>
+                  <IconButton
+                    aria-label="close"
+                    onClick={handleCloseBackdrop}
+                    sx={{
+                      position: "absolute",
+                      right: 8,
+                      top: 8,
+                      color: (theme) => theme.palette.grey[500],
+                    }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </DialogActions>
+              </Dialog>
             </Tooltip>
 
-<DialogBox/>
             <Tooltip title="menu-bar">
-              <button className="right-div-props">
+              <button className="menu-lib">
                 <BiCategory
+                
+                  style={{ color: "white" }}
                   onClick={() => setIsDrawerOpen(true)}
-                  className="menu-icon right-icons"
-                />
+                  className="menu-icon right-icons"/>
+                
+                
+                
               </button>
             </Tooltip>
           </ThemeProvider>
@@ -163,13 +251,43 @@ const Navbar = () => {
 
           <div className="right-bar">
             <div className="close-icon">
-              <AiOutlineCloseCircle className="menu-icon" onClick={toggle} />
+              <IconButton
+                aria-label="close"
+                onClick={toggle}
+                className="menu-icon"
+                sx={{
+                  position: "absolute",
+
+                  right: 8,
+                  top: 8,
+                  color: (theme) => theme.palette.grey[500],
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
             </div>
+
             <h3>Menu</h3>
             {menu.map((route, index) => (
               <div key={index} className="route">
-                <div className="icon">{route.icon}</div>
-                <a href={route.path}>{route.name}</a>
+                <div
+                  className={`icon icon-link ${
+                    route.path === `/${page}/${mediaType}` ? "red-icon" : ""
+                  }`}
+                >
+                  {route.icon}
+                </div>
+                <div className="names">
+                  <Link className="icon-link" to={route.path}>
+                    {route.name}
+                  </Link>
+                </div>
+
+                <div
+                  className={
+                    route.path === `/${page}/${mediaType}` ? "red-box" : ""
+                  }
+                ></div>
               </div>
             ))}
 
@@ -177,20 +295,85 @@ const Navbar = () => {
             {Library.map((route, index) => (
               <div key={index} className="route">
                 <div className="icon">{route.icon}</div>
-                <a href={route.path}>{route.name}</a>
+                <Link className="icon-link" to={route.path}>
+                  {route.name}
+                </Link>
               </div>
             ))}
             {miscellaneous.map((route, index) => (
               <div key={index} className="route">
                 <div className="icon">{route.icon}</div>
-                <a href={route.path}>{route.name}</a>
+                <Link className="icon-link" to={route.path}>
+                  {route.name}
+                </Link>
               </div>
             ))}
 
-            <button className="logout-box">
+            <div className="logout-box">
+            <button onClick={handleOpenBackdrop2} className="logout-box">
               <BiLogOut />
-              <div className="logout">Logout</div>
+              <div className="logout">SignIn</div>
             </button>
+            <button onClick={handleOpenBackdrop3} className="logout-box">
+              <BiLogOut />
+              <div className="logout">Login</div>
+            </button>
+            </div>
+
+            <Dialog
+              maxWidth={"lg"}
+              PaperProps={{
+                sx: {
+                  width: "1200px",
+                  height: "750px",
+                },
+              }}
+              open={openbackdrop2}
+              onClose={handleCloseBackdrop2}
+            >
+              <SignIn />
+              <DialogActions>
+                <IconButton
+                  aria-label="close"
+                  onClick={handleCloseBackdrop2}
+                  sx={{
+                    position: "absolute",
+                    right: 8,
+                    top: 8,
+                    color: (theme) => theme.palette.grey[500],
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogActions>
+            </Dialog>
+            <Dialog
+              maxWidth={"lg"}
+              PaperProps={{
+                sx: {
+                  width: "1200px",
+                  height: "750px",
+                },
+              }}
+              open={openbackdrop3}
+              onClose={handleCloseBackdrop3}
+            >
+              <Login/>
+              <DialogActions>
+                <IconButton
+                  aria-label="close"
+                  onClick={handleCloseBackdrop3}
+                  sx={{
+                    position: "absolute",
+                    right: 8,
+                    top: 8,
+                    color: (theme) => theme.palette.grey[500],
+                  }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogActions>
+            </Dialog>
           </div>
         </div>
       </Drawer>
@@ -202,7 +385,9 @@ const Navbar = () => {
         onClose={() => setIsDrawerOpen(false)}
         PaperProps={{
           sx: {
-            backgroundColor: "red",
+            backgroundColor: " #333333",
+            whiteSpace: "nowrap",
+            overflowX: "hidden",
             "&::-webkit-scrollbar": {
               display: "none",
             },
@@ -212,11 +397,18 @@ const Navbar = () => {
         <div className="box">
           <div className="profile-section">
             <div className="avatar">
-              <Avatar src="../src/assets/images/avatar.png" />
+              <Lottie
+                animationData={Profile}
+                loop={false}
+                style={{ width: 40, color: "white" }}
+                className="profile"
+                autoPlay={false}
+              />
+              <div className="edit-icon"></div>
             </div>
             <div className="name-details">
-              <div className="name">Dipan Dhali</div>
-              <div className="email">dipandhali2021@gmail.com</div>
+              <div className="name">{data?.data?.name}</div>
+              <div className="email">{data?.data?.email}</div>
             </div>
             <div className="profile-drop-down-menu">
               <AiFillCaretDown
@@ -238,15 +430,25 @@ const Navbar = () => {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                {!isButtonDisabled?(<MenuItem onClick={handleCloseout}>Logout</MenuItem>):(<div></div>)}
               </Menu>
             </div>
 
             <div className="close-icon">
-              <AiOutlineCloseCircle
-                className="menu-icon"
+              <IconButton
+                aria-label="close"
                 onClick={() => setIsDrawerOpen(false)}
-              />
+                className="menu-icon"
+                sx={{
+                  position: "absolute",
+
+                  right: 12,
+                  top: 20,
+                  color: (theme) => theme.palette.grey[500],
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
             </div>
           </div>
 
@@ -264,7 +466,7 @@ const Navbar = () => {
             <div className="genres-bar">
               <h3>Genres.</h3>
               <a href="#" target="_blank" className="see-all">
-                <h3>see all</h3>
+                <h4>see all</h4>
                 <BsFillCaretRightFill />
               </a>
             </div>
@@ -279,6 +481,7 @@ const Navbar = () => {
           </div>
         </div>
       </Drawer>
+
     </>
   );
 };

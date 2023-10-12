@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@600;800&display=swap");
+.profile-container {
+  display: flex;
+  padding: 10px;
+  .left-box{
+    .socialHandle{
+        display: flex;
+        gap: 10px;
+        margin: 20px;
+        svg{
+            height: 30px;
+            width: 30px;
+            color: black;
+            &:hover{
+                color: rgba(0, 0, 0, 0.349);
+            }
+        }
+    }
+
+    .personal-info{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+        margin-top: 10px;
+    }
+  }
+  .right-box {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: scroll;
+    
+      .name {
+        font-size: xx-large;
+        font-weight: bolder;
+        font-family: "Source Sans 3", sans-serif;
+        font-weight: 800;
+      }
+    
+    h2 {
+      font-family: "Source Sans 3", sans-serif;
+      font-weight: 600;
+    }
+    .known-for {
+    
+      white-space: nowrap;
+      height: 360px;
+      -webkit-scrollbar: disabled;
+      font-weight: bold;
+      position: relative;
+      
+      .known-box{
+          overflow-x: scroll;
+        display: flex;
+        
+        .left-box-known{
+                overflow-y: hidden;
+            .poster-container {
+              display: inline-block;
+              height: 250px;
+              width: 160px;
+              object-fit: contain;
+              margin: 10px 10px;
+              border-radius: 20px;
+              white-space: nowrap;
+              position: relative;
+              .poster {
+                border-radius: 10px;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.476);
+                img {
+                  max-width: 100%;
+                  border-radius: 10px;
+                  object-fit: cover;
+                  height: 100%;
+                  white-space: nowrap;
+                 
+                }
+              }
+              .poster-name {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                height: 60px;
+      
+                white-space: normal;
+                word-wrap: break-word;
+                text-overflow: ellipsis;
+                overflow-x: scroll;
+              }
+            }
+        }
+        .right-box-known{
+            width: 10%;
+            height: 300px;
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                #ffffff 79.17%
+            );
+            position: absolute;
+            left: 400px;
+           
+            
+        }
+      }
+    }
+  }
+}

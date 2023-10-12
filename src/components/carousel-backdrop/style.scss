@@ -1,13 +1,18 @@
+.bigger {
+  position: static;
+}
+
 .carousel-backdrop {
   // border: 2px solid rgb(179, 255, 0);
   white-space: nowrap;
-width: 1280px;
+  width: 1360px;
   -webkit-scrollbar: disabled;
   position: relative;
   overflow-x: scroll;
+
   .details-backdrop {
     position: absolute;
-    top: 120px;
+    top: 100px;
     margin-left: 13px;
     color: white;
     width: 350px;
@@ -32,28 +37,38 @@ width: 1280px;
           background-color: rgba(255, 255, 255, 0.435);
           padding: 8px;
           border-radius: 20px;
-          width: 35px;
+          width: 44px;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
 
-          &:hover{
+          &:hover {
             background-color: rgba(238, 255, 0, 0.24);
           }
-  
-  
+
           .plus-icon {
             filter: invert(100%);
           }
-      }
+        }
       }
     }
     .movie-name {
       font-weight: bolder;
-      font-size: 17px;
 
-      font-family: "Inter", sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      h3 {
+        -webkit-line-clamp: 2;
+        text-overflow: clip;
+        overflow: hidden;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 600;
+        flex: auto;
+        font-size: 25px;
+        display: flex;
+        flex-wrap: wrap;
+      }
     }
     .rating {
       display: flex;
@@ -74,7 +89,7 @@ width: 1280px;
 
   .carouselItem-backdrop {
     display: inline-block;
-    height: 250px;
+    height: fit-content;
     width: 400px;
     object-fit: contain;
     margin: 10px 10px;

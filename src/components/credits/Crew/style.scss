@@ -1,0 +1,32 @@
+.credit-box{
+    display: flex;
+    
+    
+    .credits{
+        display: flex;
+        flex-direction: column;
+      width: 200px;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+       
+        word-wrap: break-word;
+        .head{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg{
+                width: 25px;
+                height: 25px;
+                border-radius: 20px;
+                transition: all 0.4s;
+                &:hover{
+                    color: rgb(255, 251, 0);
+                    background-color: black;
+                }
+            }
+        }
+    }
+    
+}

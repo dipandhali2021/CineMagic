@@ -9,11 +9,25 @@ h1{
 
     .cast-flex{
         display: flex;
-        gap: 20px;
+        gap: 25px;
         overflow-x: scroll;
         padding: 0 40px;
+        .names{
+          display: flex;
+          gap: 10px;
+          flex-direction: column;
+          align-items: center;
+          .name{
+            font-weight: 600;
+            text-align: center;
+          }
 
+          .post{
+            text-align: center;
+          }
+        }
 
+       
         &::-webkit-scrollbar {
             
             height: 10px;
@@ -34,5 +48,15 @@ h1{
 
           &::-webkit-scrollbar-thumb:hover {
             background: #555; 
+
+
+      .dialogBox{
+        width: 500px;
+        height: 500px;
+        .dialog-box-poster{
+          width: 50%;
+          height: 100%;
+        }
+      }
     }
 }}
