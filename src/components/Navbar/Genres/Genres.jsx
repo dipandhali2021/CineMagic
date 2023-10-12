@@ -11,7 +11,7 @@ const Genres = () => {
   
   const namesArray = dataArray.map((item) => item.name).slice(0, 10);;
   
-  console.log(namesArray);
+  
   return (
     <>
       <div className="names-container">

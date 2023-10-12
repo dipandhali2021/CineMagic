@@ -7,28 +7,31 @@ import useFetch from "../../hooks/useFetch.js";
 import "./style.scss";
 
 import Carousel from "../carousel-poster/CarouselP";
+import { Link, useParams } from "react-router-dom";
 
 const Toprated = () => {
-  const carouselContainer = useRef();
-  const { data, loading } = useFetch("/movie/top_rated");
+  const {mediaType} = useParams()
+  const { data, loading } = useFetch(`/${mediaType}/top_rated`);
 
   
 
   return (
     <div className="carousel">
-      <ContentWrapper>
+      <ContentWrapper >
+        <div className="blurry-box">
         <div className="top-rated-bar">
             <div className="name-bar">
           <h2>Top Rated</h2>
           <img src="../src/assets/images/star.png" alt="" />
 
             </div>
-          <a href="#" target="_blank" className="see-all">
+          <Link to={'*'}  className="see-all">
             <h3>see all</h3>
             <BsFillCaretRightFill />
-          </a>
+          </Link>
         </div>
-        <Carousel data={data?.results} loading={loading} />
+        <Carousel  data={data?.results} loading={loading} />
+        </div>
       </ContentWrapper>
     </div>
   );

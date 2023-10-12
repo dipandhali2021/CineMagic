@@ -1,16 +1,28 @@
 .trending-bar {
-    border: 2px solid green;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
-    a{
-        text-decoration: none;
+    height: fit-content;
+    h2{
+        font-weight: 900;
+
     }
-    .see-all{
+    .a{
+        text-decoration: none;
+        color: white;
         display: flex;
         align-items: center;
+        h3{
+            font-weight: 600;
+            font-size: 25px;
+
+        }
     }
+    
 
     
 }
+
+
 

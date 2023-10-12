@@ -6,7 +6,7 @@ import { BsPeople,BsAlarm,BsBookmarkDash,BsDownload} from "react-icons/bs";
 
 export const menu = [
     {
-      path: "/",
+      path: "/home/movie",
       name: "Home",
       icon: <AiFillHome />,
     },
@@ -16,12 +16,12 @@ export const menu = [
       icon: <AiOutlineCompass />,
     },
     {
-      path: "/community",
+      path: "/community/movie",
       name: "Community",
       icon: <BsPeople />,
     },
     {
-      path: "/coming-soon",
+      path: "/coming-soon/movie",
       name: "Coming Soon",
       icon: <BsAlarm />,
     },
@@ -29,22 +29,22 @@ export const menu = [
 
   export const Library= [
     {
-      path: "/recent",
+      path: "/recent/movie",
       name: "Recent",
       icon: <AiOutlineClockCircle />,
     },
     {
-      path: "/bookmarked",
+      path: "/bookmarked/movie",
       name: "Bookmarked",
       icon: <BsBookmarkDash />,
     },
     {
-      path: "/top-rated",
+      path: "/top-rated/movie",
       name: "Top Rated",
       icon: <AiOutlineStar />,
     },
     {
-      path: "/downloaded",
+      path: "/downloaded/movie",
       name: "Downloaded",
       icon: <BsDownload />,
     },

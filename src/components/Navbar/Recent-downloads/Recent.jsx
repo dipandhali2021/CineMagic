@@ -5,7 +5,7 @@ const Recent = () => {
   const { data, loading } = useFetch("/trending/movie/day");
   return (
     <div className="recent">
-      <h3>Recent Downloads</h3>
+      <h2>Recent Downloads</h2>
       <Carousel data={data?.results} loading={loading} />
     </div>
   )

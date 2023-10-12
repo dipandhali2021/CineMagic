@@ -10,6 +10,7 @@ import Discovery from "./pages/Discovery/Discovery";
 import Searchresult from "./pages/SearchResult/Searchresult";
 import PageNotFound from "./pages/404/PageNotFound";
 import MediaPlayer from "./pages/MediaPlayer/MediaPlayer";
+import { auth } from "./components/Firebase/firebase";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,21 @@ function App() {
   useEffect(() => {
     fetchApiConfig();
     genresCall();
+  }, []);
+
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName);
+        setEmail(user.email);
+        
+      } else {setUserName("");
+    setEmail("");
+    }
+    });
   }, []);
 
   const fetchApiConfig = () => {
@@ -31,6 +47,7 @@ function App() {
       dispatch(getApiConfiguration(url));
     });
   };
+  
 
   const genresCall = async () => {
     let promises = [];
@@ -42,7 +59,7 @@ function App() {
     });
 
     const data = await Promise.all(promises);
-    
+
     data.map(({ genres }) => {
       return genres.map((item) => (allGenres[item.id] = item));
     });
@@ -53,11 +70,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={< Searchresult/>} />
+        <Route path="/:page/:mediaType" element={<Home name={userName} email={email}/>} />
+        <Route path="/:page/:mediaType/:id" element={<Details />} />
+        <Route path="/search/:query" element={<Searchresult />} />
         <Route path="/discovery/:mediaType" element={<Discovery />} />
-        <Route path="/:mediaType/:id/mediaPlayer" element={<MediaPlayer />} />
+        <Route
+          path="/:page/:mediaType/:id/mediaPlayer"
+          element={<MediaPlayer />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
