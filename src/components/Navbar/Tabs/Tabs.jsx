@@ -21,7 +21,6 @@ const {page} =useParams();
   const tvshows = () => {
     navigate(`/${page}/tv`);
   };
-
   return (
     <Box sx={{ width: "100%" }}>
       <Tabs
