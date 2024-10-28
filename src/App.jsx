@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import react, { useEffect, useState } from "react";
 import "./style.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataFromApi } from "./utils/api";
@@ -14,7 +14,7 @@ import { auth } from "./components/Firebase/firebase";
 
 function App() {
   const dispatch = useDispatch();
-  // const { url } = useSelector((state) => state.home);
+  const { url } = useSelector((state) => state.home);
 
   useEffect(() => {
     fetchApiConfig();
@@ -70,6 +70,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/:page/:mediaType" replace />} />
         <Route path="/:page/:mediaType" element={<Home name={userName} email={email}/>} />
         <Route path="/:page/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<Searchresult />} />
