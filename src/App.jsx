@@ -70,7 +70,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/:page/:mediaType" replace />} />
+        <Route path="/" element={<Navigate to="/home/movie" replace />} />
         <Route path="/:page/:mediaType" element={<Home name={userName} email={email}/>} />
         <Route path="/:page/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<Searchresult />} />
