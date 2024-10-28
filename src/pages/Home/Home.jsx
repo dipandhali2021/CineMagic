@@ -78,9 +78,6 @@ export default function Home(name,email) {
         <Skeleton variant="rounded" width={1600} height={406.4} />
       )}
       
-      
-       
-      
     </div>
     
   );
