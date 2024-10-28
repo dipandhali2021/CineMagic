@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./style.scss";
 import Trending from "../../components/trending/Trending";
-// import Toprated from "../../components/Top-rated/Toprated";
+import Toprated from "../../components/Top-rated/Toprated";
 import useFetch from "../../hooks/useFetch";
 import { Skeleton } from "@mui/material";
 import Carousel from "react-bootstrap/Carousel";
@@ -67,11 +67,11 @@ export default function Home(name,email) {
       ) : (
         <Skeleton variant="rounded" width={1600} height={366.5} />
       )}
-      {/* {!loading ? (
+      {!loading ? (
         <Toprated />
       ) : (
         <Skeleton variant="rounded" width={1600} height={406.4} />
-      )} */}
+      )}
       {!loading ? (
          <Footer/>
       ) : (
