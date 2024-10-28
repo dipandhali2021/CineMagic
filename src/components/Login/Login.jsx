@@ -1,13 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.scss";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import Lottie from "lottie-react";
 import Loginlot from "../../assets/images/animation_llrui7id.json";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -54,7 +50,7 @@ const Login = () => {
       setSubmitButtonDisabled(true)
       signInWithEmailAndPassword(auth, user.email, user.password).then(async (res)=>{
         setSubmitButtonDisabled(false)
-        
+        console.log(res)
         navigate("/home/movie")
 
        

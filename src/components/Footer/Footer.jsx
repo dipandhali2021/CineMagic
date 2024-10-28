@@ -1,12 +1,10 @@
-import React from "react";
 import "./style.scss"; // Make sure to import your CSS styles here.
 import {
   BsInstagram,
   BsTwitter,
   BsLinkedin,
   BsFacebook,
-  BsReddit,
-  BsFillSendFill
+  BsReddit
 } from "react-icons/bs";
 const Footer = () => {
   return (

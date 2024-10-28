@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
@@ -14,7 +14,7 @@ import { auth } from "./components/Firebase/firebase";
 
 function App() {
   const dispatch = useDispatch();
-  const { url } = useSelector((state) => state.home);
+  // const { url } = useSelector((state) => state.home);
 
   useEffect(() => {
     fetchApiConfig();

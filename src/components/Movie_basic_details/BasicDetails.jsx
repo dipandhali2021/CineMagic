@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import useFetch from "../../hooks/useFetch";
+import  { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
@@ -11,14 +10,11 @@ import {
   DialogActions,
   IconButton,
   Skeleton,
-  Tooltip,
-  withTheme,
 } from "@mui/material";
 import dayjs from "dayjs";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import {
-  AiOutlinePlus,
   AiOutlineUnorderedList,
   AiFillHeart,
   AiFillStar,
