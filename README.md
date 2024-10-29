@@ -25,27 +25,52 @@ To get started with the project, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/dipandhali2021/CineMagic.git
+   ```
 
-2. Navigate into the project directory
-   `cd CineMagic`
+2. Navigate into the project directory:
+   ```bash
+   cd CineMagic
+   ```
 
 3. Install the dependencies:
-   `npm install`
+   ```bash
+   npm install
+   ```
 
 ## Running the Application
 
 To run the development server, use the following command:
-   `npm run dev`
+```bash
+npm run dev
+```
 
 ## API Configuration
-- The application uses the TMDB API for fetching movie and TV show data. You may need to create a 
-`.env` file in the root of your project to store your TMDB API key:
- `REACT_APP_TMDB_API_KEY=your_api_key_here`
+
+- The application uses the TMDB API for fetching movie and TV show data. You may need to create a `.env` file in the root of your project to store your TMDB API key:
+  ```plaintext
+  REACT_APP_TMDB_API_KEY=your_api_key_here
+  ```
 
 - Replace `your_api_key_here` with your actual TMDB API key.
 
+## Firebase Configuration
+
+To set up Firebase authentication, add the following environment variables in your `.env` file:
+
+```plaintext
+REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+REACT_APP_FIREBASE_PROJECT_ID=your_firebase_project_id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+REACT_APP_FIREBASE_APP_ID=your_firebase_app_id
+```
+
+- Replace the placeholders with the actual values from your Firebase project settings.
+
 ## Contributing
-- Contributions are welcome! If you would like to contribute to this project, please fork the repository and submit a pull request.
+
+Contributions are welcome! If you would like to contribute to this project, please fork the repository and submit a pull request.
 
 - Fork the repository
 - Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -54,11 +79,11 @@ To run the development server, use the following command:
 - Open a pull request.
 
 ## License
-- This project is licensed under the MIT License - see the [LICENSE](https://choosealicense.com/) file for details.
+
+This project is licensed under the MIT License - see the [LICENSE](https://choosealicense.com/) file for details.
 
 ## Acknowledgments
+
 - [TMDB-API](https://developer.themoviedb.org/reference/intro/getting-started) for providing movie data.
 - [Firebase](https://firebase.google.com/) for user authentication.
 - [React](https://react.dev/) for building the user interface.
-
-
