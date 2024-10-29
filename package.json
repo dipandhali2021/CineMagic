@@ -10,11 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/joy": "^5.0.0-beta.2",
-    "@mui/material": "^5.16.7",
+    "@mui/material": "^5.14.5",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "bootstrap": "^5.3.1",
