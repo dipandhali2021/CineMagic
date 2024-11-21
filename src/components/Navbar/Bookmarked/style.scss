@@ -1,10 +1,27 @@
-
-h2{
-    font-weight: 900;
-    padding: 10px;
-    color: yellowgreen;
-    font-size: 20px;
+.title{
+  font-weight: 900;
+  padding: 10px;
+  color: #fff;
+  font-size: 20px;
 }
+
+.container-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text {
+  margin-bottom: 4px;
+  color: #6d6875;
+  gap: 10px;
+
+  .icon {
+      font-size: 16px;
+      margin-left: 5px;
+  }
+}
+
 .bookmarked {
   height: 260px;
   display: flex;

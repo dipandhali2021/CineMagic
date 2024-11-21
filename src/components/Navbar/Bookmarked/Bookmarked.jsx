@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../../utils/api";
 import "./style.scss";
+import { AiOutlineRight } from "react-icons/ai";
+import MovieThumb from "../../movie-thumb/MovieThumb";
+
 const Bookmarked = () => {
   const { mediaType } = useParams();
   const { list } = useSelector((state) => state.list);
@@ -29,20 +32,17 @@ const Bookmarked = () => {
 
   return (
     <>
-      <h2>Bookmarked</h2>
-    <div className="bookmarked">
-      <div className="carousel-Bookmark">
-        {carouselData?.map((item) => {
-          const posterUrl = url.poster + item.backdrop_path;
-          return (
-            <div className="carousel-Items">
-              <div className="posterBlock-backdrop">
-                <img src={posterUrl} />
-              </div>
-            </div>
-          );
-        })}
+      <div className='container-text'>
+        <h2 className='title'>Recent Downloads</h2>
+        <span className='text'>
+          See all
+          <AiOutlineRight className='icon' />
+        </span>
       </div>
+    <div className="bookmarked">
+      {carouselData && carouselData.length > 0 && (
+        <MovieThumb data={carouselData[0]} loading={false} />
+      )}
     </div>
 </>
   );
