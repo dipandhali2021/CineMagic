@@ -11,18 +11,34 @@
   }
   
   .name-item {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 4px;
+    background-color: #151516;
+    padding: 8px 20px;
+    border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5px;
+    transition: background-color 0.4s ease;
+
+    cursor: pointer;
+
+    &.selected {
+      background-color: #FF0000;
+    }
+
+    .text-item {
+      color: #6d6875;
+
+      &.selectedText {
+        color: #fff;
+      }
+    }
 
     .plus-icon{
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
+      color: #fff;
     }
   }
   
