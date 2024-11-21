@@ -5,7 +5,7 @@ import {
   AiOutlineSearch,
   AiOutlineFilter,
   AiOutlinePlusSquare,
-  AiFillCaretDown,
+  AiOutlineDown,
 } from "react-icons/ai";
 
 import SignIn from "../SignIn/SignIn";
@@ -385,7 +385,7 @@ console.log(isButtonDisabled)
         onClose={() => setIsDrawerOpen(false)}
         PaperProps={{
           sx: {
-            backgroundColor: " #333333",
+            backgroundColor: "#333333",
             whiteSpace: "nowrap",
             overflowX: "hidden",
             "&::-webkit-scrollbar": {
@@ -405,18 +405,19 @@ console.log(isButtonDisabled)
                 autoPlay={false}
               />
               <div className="edit-icon"></div>
-            </div>
-            <div className="name-details">
-              <div className="name">{data?.data?.name}</div>
-              <div className="email">{data?.data?.email}</div>
+              <div className="name-details">
+                <div className="name">Junior 07</div>
+                <div className="email">junior07@gmail.com</div>
+              </div>
             </div>
             <div className="profile-drop-down-menu">
-              <AiFillCaretDown
+              <AiOutlineDown
                 id="basic-button"
                 aria-controls={open ? "basic-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
+                className="basic-button"
               />
               <Menu
                 id="basic-menu"
@@ -433,30 +434,13 @@ console.log(isButtonDisabled)
                 {!isButtonDisabled?(<MenuItem onClick={handleCloseout}>Logout</MenuItem>):(<div></div>)}
               </Menu>
             </div>
-
-            <div className="close-icon">
-              <IconButton
-                aria-label="close"
-                onClick={() => setIsDrawerOpen(false)}
-                className="menu-icon"
-                sx={{
-                  position: "absolute",
-
-                  right: 12,
-                  top: 20,
-                  color: (theme) => theme.palette.grey[500],
-                }}
-              >
-                <CloseIcon />
-              </IconButton>
-            </div>
           </div>
 
           <div className="search-bar">
             <div className="search-icon-box">
               <AiOutlineSearch className="search-icon" />
             </div>
-            <input type="text" />
+            <input type="text" placeholder="Search movies"/>
             <div className="filter-icon-box">
               <AiOutlineFilter className="filter-icon" />
             </div>
@@ -464,11 +448,7 @@ console.log(isButtonDisabled)
 
           <div className="genres">
             <div className="genres-bar">
-              <h3>Genres.</h3>
-              <a href="#" target="_blank" className="see-all">
-                <h4>see all</h4>
-                <BsFillCaretRightFill />
-              </a>
+              <h3>GENRE</h3>
             </div>
             <Genres />
           </div>

@@ -197,18 +197,40 @@
 
 .box {
   width: 350px;
-  background-color: #333333;
+  background-color: #211C23;
   height: 100vh;
   padding: 20px;
 
   .profile-section {
     align-items: center;
     display: flex;
-    gap: 10px;
     margin-bottom: 20px;
+    justify-content: space-between;
   }
+
+  .avatar {
+    display: flex;
+    gap: 8px;
+  }
+
   .profile-drop-down-menu {
     position: relative;
+  }
+
+  .name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .email {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6d6875;
+  }
+
+  .basic-button {
+    color: #fff;
   }
 
   .search-bar {
@@ -220,9 +242,11 @@
 
     input {
       width: 60%;
-      background-color: rgba(0, 0, 0, 0.154);
+      background-color: #151516;
       outline: none;
       border: none;
+      color: #6d6875;
+      font-size: 14px;
     }
     .search-icon-box {
       width: 20%;
@@ -231,11 +255,12 @@
 
       justify-content: center;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.154);
+      background-color: #151516;
       border-radius: 20px 0 0 20px;
       .search-icon {
         width: 30px;
         height: 30px;
+        color: #fff;
       }
     }
     .filter-icon-box {
@@ -246,11 +271,12 @@
 
       justify-content: center;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.154);
+      background-color: #151516;
 
       .filter-icon {
         width: 30px;
         height: 30px;
+        color: #fff;
       }
     }
   }
@@ -260,15 +286,9 @@
       display: flex;
       justify-content: space-between;
       h3 {
-        color: yellowgreen;
-      }
-    }
-    .see-all {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      h4 {
-        font-size: 18px;
+        color: #6d6875;
+        font-size: 12px;
+        font-weight: 500;
       }
     }
   }
